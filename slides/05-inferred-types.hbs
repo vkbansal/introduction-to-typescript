@@ -1,0 +1,14 @@
+<section class="slide slide-full">
+    <div class="title">Inferred Types</div>
+    <pre class="fragment fade-in"><code data-lang="ts">let someOtherString = 'Yet Another String';</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">someOtherString = 1234;</code></pre>
+    <br/>
+    <pre class="fragment fade-in"><code data-lang="ts">let userId = (a: string, b:number) =&gt; a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// is equivalent to
+let userId = (a: string, b:number): string =&gt; a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// try this
+let userId = (a: string, b:number): number =&gt; a + b;</code></pre>
+    <br/>
+    <pre class="fragment fade-in"><code data-lang="ts">let target = document.getElementById('target');
+target.onclick = (event) =&gt; event.button;</code></pre>
+</section>

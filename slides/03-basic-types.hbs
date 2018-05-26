@@ -1,0 +1,114 @@
+<section class="slide-4 slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Boolean</div>
+            <pre><code data-lang="ts">let isDone: boolean = false;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Number</div>
+            <pre><code data-lang="ts">let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">String</div>
+            <pre><code data-lang="ts">let color: string = "blue";
+color = 'red';</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Array</div>
+            <pre><code data-lang="ts">let list: number[] = [1, 2, 3];</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">let list: Array<number> = [1, 2, 3];</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Tuple</div>
+            <pre><code data-lang="ts">// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = ["hello", 10]; // OK
+// Initialize it incorrectly
+x = [10, "hello"]; // Error</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Enum</div>
+            <pre><code data-lang="ts">enum Color {Red, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2];
+
+alert(colorName); // Displays 'Green' as its value is 2 above</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="subtitle">Enum</div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Direction {
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
+}</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Any</div>
+            <pre><code data-lang="ts">let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // okay, definitely a boolean</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Void</div>
+            <pre><code data-lang="ts">function warnUser(): void {
+    alert("This is my warning message");
+}</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">let unusable: void = undefined; // DO NOT DO THIS!</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Null and Undefined</div>
+            <pre><code data-lang="ts">// Not much else we can assign to these variables!
+let u: undefined = undefined;
+let n: null = null;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Never</div>
+            <pre><code data-lang="ts">// Function returning never must have unreachable end point
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// Function returning never must have unreachable end point
+function infiniteLoop(): never {
+    while (true) {
+    }
+}</code></pre>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,110 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.reveal {
+    background: #252526;
+    color: #fff;
+
+    .controls .controls-arrow {
+        &::before,
+        &::after {
+            background-color: #fff !important;
+        }
+    }
+
+    .slide-full {
+        width: 100%;
+        height: 100%;
+    }
+
+    .title {
+        font-size: 4rem;
+        margin: 0.75em 0;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+        margin: 1em 0;
+    }
+
+    pre {
+        max-width: 960px;
+        margin: 0 auto;
+        display: block;
+        padding: 1em;
+        background: #444;
+        text-align: left;
+        border-radius: 2px;
+        overflow: auto;
+        line-height: 1.5;
+
+        & > code {
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 24px;
+        }
+    }
+}
+
+/**
+ * SLIDE 1
+ */
+.slide-1 {
+    .logo {
+        width: 160px;
+        height: 160px;
+        display: inline-block;
+        background: #fff;
+        position: relative;
+        transform: translateY(14px);
+    }
+
+    & > svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-title {
+        font-size: 6rem;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-size: 3rem !important;
+    }
+}
+
+/**
+ * SLIDE 2
+ */
+.slide-2 {
+    .ts-sets {
+        position: relative;
+        height: 600px;
+        transform: translateY(-10%);
+
+        & > svg {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 10%);
+        }
+    }
+}

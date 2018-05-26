@@ -1,0 +1,220 @@
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function reduce(input, reducer, initialValue) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input,
+    reducer,
+    initialValue
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue: any
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: any[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: Output
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: Output
+): Output {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: Output, b: Input) =&gt; Output,
+    initialValue: Output
+): Output {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;T, U&gt;(
+    input: T[],
+    reducer: (a: U, b: T) =&gt; T,
+    initialValue: U
+): U {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">import * as React from 'react';
+
+interface MyProps {
+    // some props
+}
+
+interface MyState {
+    // some props
+}
+
+class MyComponent extends React.Component&lt;MyProps, MyState&gt;{
+    render() {
+        // your code here
+    };
+}</code></pre>
+    </section>
+</section>

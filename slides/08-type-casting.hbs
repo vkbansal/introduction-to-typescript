@@ -1,0 +1,72 @@
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function createShape(kind: string): Shape {
+    switch (kind) {
+        case 'circle':
+            return new Circle();
+        case 'square':
+            return new Square();
+        case 'triangle':
+            return new Triangle();
+        default:
+            return new Shape();
+    }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// this is a Shape
+const circle = createShape('circle');</code></pre>
+        <pre><code data-lang="ts">// this is also a Shape
+const square = createShape('square');</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// now this will be treated as Circle
+const circle = &lt;Circle>createShape('circle');
+
+// this is still a Shape
+const square = createShape('square');</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// now this will be treated as Circle
+const circle = &lt;Circle>createShape('circle');
+
+// now this will be treated as Square
+const square = createShape('square') as Square;</code></pre>
+    </section>
+</section>

@@ -1,0 +1,108 @@
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre class="fragment fade-in" style="max-height: 550px"><code data-lang="ts">const blogpost = {
+    id: 1,
+    title: 'Random blog post title',
+    author: {
+        first_name: 'John',
+        last_name: 'Doe'
+    },
+    comments: [
+        {
+            author: {
+                first_name: 'Johny',
+                last_name: 'Bravo'
+            },
+            body: 'first comment'
+        },
+        {
+            author: {
+                first_name: 'Hodor',
+                last_name: 'Hodor'
+            },
+            body: 'Hodor Hodor Hodor Hodor!'
+        }
+    ]
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: {
+        first_name: string;
+        last_name: string;
+    }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author;
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author;
+    body: string;
+}</code></pre>
+    </section>
+</section>
