@@ -27,7 +27,10 @@ code.forEach(block => {
 
     if (lang) {
         text = highlight(text, lang);
-        text = text.replace(/&amp;lt;/g, '&lt;').replace(/&amp;gt;/g, '&gt;');
+        text = text
+            .replace(/&amp;lt;/g, '&lt;')
+            .replace(/&amp;gt;/g, '&gt;')
+            .replace(/&amp;amp;/g, '&amp;');
         block.innerHTML = text;
     }
 });

@@ -29,8 +29,6 @@ function add(x: number, y: number): number {
 let add = (x: number, y: number): number =&gt; x + y;</code></pre>
         <pre class="fragment fade-in"><code data-lang="ts">let add: (x: number, y: number) =&gt; number =
     (x: number, y: number): number =&gt; x + y;</code></pre>
-        </code>
-        </pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Functions</div>
@@ -44,10 +42,112 @@ let add = (x: number, y: number): number =&gt; x + y;
 
 let add: (x: number, y: number) =&gt; number =
     (x, y) =&gt; x + y;</code></pre>
-        </code>
-        </pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
-         <div class="title">Functions</div>
+        <div class="title">Functions</div>
+        <div class="subtitle">Parameters Check</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // error, too few parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName?: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works, but there is an issue!</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName?: string): string {
+    if (lastName) {
+        return firstName + " " + lastName;
+    }
+
+    return firstName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works correctly now</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName = "Smith"): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works correctly now</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", undefined); // still works</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result4 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional vs Default parameters</div>
+        <pre><code data-lang="ts">// optional parameters
+function buildName(firstName: string, lastName?: string): string {
+    ...
+}
+
+// default-initialized parameters
+function buildName(firstName: string, lastName = "Smith"): string {
+    ...
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+         <div class="subtitle">Optional vs Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName = "John", lastName?: string): string {
+    return firstName + " " + lastName;
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // error, too few parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // okay and returns "Bob Adams"</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result4 = buildName(undefined, "Adams"); // okay and returns "John Adams"</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName, ...restOfName) {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+         <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, ...restOfName): string {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, ...restOfName: string[]): string {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");</code></pre>
     </section>
 </section>

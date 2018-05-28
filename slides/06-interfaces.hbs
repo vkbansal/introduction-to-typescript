@@ -1,6 +1,7 @@
 <section class="slide-full">
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre class="fragment fade-in" style="max-height: 550px"><code data-lang="ts">const blogpost = {
     id: 1,
     title: 'Random blog post title',
@@ -28,17 +29,20 @@
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
 }</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
 }</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
     title: string;
@@ -46,6 +50,7 @@
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
     title: string;
@@ -57,10 +62,40 @@
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
     title: string;
-    author: Author;
+    author: {
+        first_name: string;
+        last_name: string;
+    };
+    comments: Array<{
+        author: {
+            first_name: string;
+            last_name: string;
+        };
+        body: string;
+    }>
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: {
+        first_name: string;
+        last_name: string;
+    };
+    comments: Array<{
+        author: {
+            first_name: string;
+            last_name: string;
+        };
+        body: string;
+    }>
 }
 
 interface Author {
@@ -70,10 +105,33 @@ interface Author {
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
     title: string;
     author: Author;
+    comments: Array<{
+        author: Author;
+        body: string;
+    }>
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Array<{
+        author: Author;
+        body: string;
+    }>
 }
 
 interface Author {
@@ -88,6 +146,7 @@ interface Comment {
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
         <pre><code data-lang="ts">interface BlogPost {
     id: number;
     title: string;
@@ -105,4 +164,148 @@ interface Comment {
     body: string;
 }</code></pre>
     </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author; // You need to allow anonymous comments
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author?: Author;
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Readonly properties</div>
+        <pre><code data-lang="ts">interface Point {
+    x: number;
+    y: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Readonly properties</div>
+        <pre><code data-lang="ts">interface Point {
+    readonly x: number;
+    readonly y: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let p1: Point = { x: 10, y: 20 };</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">p1.x = 5; // error!</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Optional properties</div>
+        <pre><code data-lang="ts">interface SquareConfig {
+    color: string;
+    width: number;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Optional properties</div>
+        <pre><code data-lang="ts">interface SquareConfig {
+    color?: string;
+    width?: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function createSquare(config: SquareConfig): { color: string; area: number } {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let mySquare = createSquare({ colour: "red", width: 100 });</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">/*
+    Object literal may only specify known properties,
+    but 'colour' does not exist in type 'SquareConfig'.
+    Did you mean to write 'color'?
+*/</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Function Types</div>
+        <pre><code data-lang="ts">// Remember me?
+function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface BuildName {
+   (firstName: string, lastName: string): string;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let buildName2: BuildName = function(firstName, lastName) {
+    return firstName + " " + lastName;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Function Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface SomeConverter {
+   serializer(input: any): string;
+   deserializer: (input: string) => any;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Class Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date);
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Extending interfaces</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Extending interfaces</div>
+        <pre><code data-lang="ts">interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}</code></pre></section>
 </section>

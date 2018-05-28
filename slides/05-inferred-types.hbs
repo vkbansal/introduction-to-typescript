@@ -2,13 +2,12 @@
     <div class="title">Inferred Types</div>
     <pre class="fragment fade-in"><code data-lang="ts">let someOtherString = 'Yet Another String';</code></pre>
     <pre class="fragment fade-in"><code data-lang="ts">someOtherString = 1234;</code></pre>
-    <br/>
-    <pre class="fragment fade-in"><code data-lang="ts">let userId = (a: string, b:number) =&gt; a + b;</code></pre>
-    <pre class="fragment fade-in"><code data-lang="ts">// is equivalent to
-let userId = (a: string, b:number): string =&gt; a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// [ts] Type '1234' is not assignable to type 'string'</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">let userId = (a: string, b:number) => a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// let userId: (a: string, b: number) => string</code></pre>
     <pre class="fragment fade-in"><code data-lang="ts">// try this
-let userId = (a: string, b:number): number =&gt; a + b;</code></pre>
-    <br/>
-    <pre class="fragment fade-in"><code data-lang="ts">let target = document.getElementById('target');
-target.onclick = (event) =&gt; event.button;</code></pre>
+let userId = (a: string, b:number): number => a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// [ts] Type 'number' is not assignable to type 'string'</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">let target = document.getElementById('target');</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// let target: HTMLElement | null</code></pre>
 </section>

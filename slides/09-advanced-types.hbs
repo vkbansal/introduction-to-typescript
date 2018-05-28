@@ -1,26 +1,321 @@
 <section class="slide-full">
-     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Intersection Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend(first, second) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U): T & U {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+interface EmploymentStatus {
+    employed: boolean;
+    job: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U): T & U {
+    // ...
+}
+interface Person { /* ... */ }
+interface EmploymentStatus { /* ... */ }
+
+const jim: Person =  {  firstName: "Jim", lastName: "Parson" };
+const actor: EmploymentStatus = { employed: true, job: "Actor" };
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">const jimTheActor = extend(jim, actor); // Person & EmploymentStatus
+console.log(jimTheActor.employed); // true</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Union Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: any) {
+    if (typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+
+    if (typeof padding === "string") {
+        return padding + value;
+    }
+
+    throw new Error(`Expected string or number, got '${padding}'.`);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Union Types</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: any) {
+    // ...
+}
+
+padLeft("Hello world", 4); // returns "    Hello world"</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let indentedString = padLeft("Hello world", true);
+// passes at compile time, fails at runtime.</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Union Types</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: string | number) {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let indentedString = padLeft("Hello world", true);
+// errors during compilation</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Type Aliases</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: string | number) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Type Aliases</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+type Padding = string | number;
+
+function padLeft(value: string, padding: Padding) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Type Aliases</div>
+        <pre><code data-lang="ts">type SingleOrArray&lt;T> = T | T[];</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Tree&lt;T> = {
+    value: T;
+    left: Tree&lt;T>;
+    right: Tree&lt;T>;
+}</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Literal Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type Easing = "ease-in" | "ease-out" | "ease-in-out";
+animate(dx: number, dy: number, easing: Easing) {
+    // ...
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type DieRoll = 1 | 2 | 3 | 4 | 5 | 6;
+function rollDie(): DieRoll {
+    // ...
+}</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Index types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    name: string;
+    age: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let person: Person = {
+    name: 'Jarid',
+    age: 35
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let strings: string[] = pluck(person, ['name']); // ok, string[]</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+let person: Person = {
+    name: 'Jarid',
+    age: 35
+}
+
+let strings: string[] = pluck(person, ['name', 'unknown']);
+// what would happen here?</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names: K[]) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names: K[]): Array&lt;T[K]> {
+    return names.map(n => o[n]);
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let strings: string[] = pluck(person, ['name', 'unknown']);
+// error, 'unknown' is not in 'name' | 'age'</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">interface Map&lt;T> {
+    [key: string]: T;
+}</code></pre>
     </section>
     <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
         <div class="title">Advanced Types</div>
         <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type Keys = 'option1' | 'option2';</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Flags = {
+    [K in Keys]: boolean
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">// is eqivalent to
+type Flags = {
+    option1: boolean;
+    option2: boolean;
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    name: string;
+    age: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface PersonPartial {
+    name?: string;
+    age?: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface PersonReadOnly {
+    readonly name: string;
+    readonly age: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type ReadOnly&lt;T> = {};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre><code data-lang="ts">type ReadOnly&lt;T> = {
+    [K in keyof T]: T[K];
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre><code data-lang="ts">type ReadOnly&lt;T> = {
+    readonly [K in keyof T]: T[K];
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Partial&lt;T> = {
+    [K in keyof T]?: T[K];
+}</code></pre>
     </section>
 </section>

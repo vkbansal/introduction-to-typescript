@@ -1,8 +1,23 @@
 # Notes
 
+This is not about `Flow` vs `TypeScript`. It's about getting started with typescript.
+
 ## What is TypeScript?
 
+*   An open-source language created by Microsoft.
+*   Static type-checker and ES2015/16/17 transpiler similar to Babel.
+*   First class support for types, classes and modules.
+*   A superset of JavaScript that compiles to plain JavaScript.
+*   Typescript = JS Today + Incoming ESNext Features + Type Safety
+*   ESNext Features will be converted based on the 'target version' of JS.
+
 ## Why TypeScript?
+
+*   Makes code easier to analyse: both for new developers & legacy code.
+*   Reliable Refactoring: You might forget to pass a required parameter / wrong type of parameter.
+*   Better IDE Support: Better Code hinting (subjective).
+*   Can catch errors early: You might pass wrong casing of keys, wrong parameters, etc.
+*   Incrementally move an existing JavaScript code base to TypeScript.
 
 ## Basic Types
 
@@ -61,9 +76,28 @@
 
 ## Functions
 
+*   Functions can be written in two ways: function expression and function declaration.
+*   All parameters are reuired by default.
+*   Optional parameters are denoted using `?` and they must come only after required parameters.
+*   Default-initialized parameters: user does not provide one, or if the user passes `undefined` in its place.
+*   `null` is a value, even as per ES spec.
+*   Default-initialized parameters that come after all required parameters are treated as optional, and just like optional parameters, can be omitted when calling their respective function.
+*   Unlike plain optional parameters, default-initialized parameters don’t need to occur after required parameters. If a default-initialized parameter comes before a required parameter, users need to explicitly pass undefined to get the default initialized value.
+*   Rest parameters are treated as a boundless number of optional parameters. When passing arguments for a rest parameter, you can use as many as you want; you can even pass none.
+*   Rest parameters must an `Array` always
+
 ## Infered types
 
+There are several places where type inference is used to provide type information when there is no explicit type annotation.
+
 ## Interfaces
+
+*   One of TypeScript’s core principles is that type-checking focuses on the shape that values have. This is sometimes called “duck typing” or “structural subtyping”.
+
+*   Interfaces with optional properties are written similar to other interfaces, with each optional property denoted by a `?` at the end of the property name in the declaration.
+
+*   The advantage of optional properties is that you can describe these possibly available properties while still also preventing use of properties that are not part of the interface. For example, had we mistyped the name of the `color` property in `createSquare`, we would get an error message letting us know.
+*   Interfaces are also capable of describing function types.
 
 ## Genereics
 
@@ -83,3 +117,27 @@
 *   A union type describes a value that can be one of several types.
 *   We use the vertical bar (`|`) to separate each type.
 *   Not to be confused with mathematical definition of union.
+
+### Type Aliases
+
+*   Type aliases create a new name for a type.
+*   Type aliases are sometimes similar to interfaces, but can name primitives, unions, tuples, and any other types that you’d otherwise have to write by hand.
+*   Aliasing doesn’t actually create a new type - it creates a new name to refer to that type.
+*   Aliasing a primitive is not terribly useful, though it can be used as a form of documentation.
+*   Just like interfaces, type aliases can also be generic
+*   We can also have a type alias refer to itself in a property
+*   Type aliases cannot be extended or implemented from (nor can they extend/implement other types). Because an ideal property of software is being open to extension, you should always use an interface over a type alias if possible.
+
+### Literal Types
+
+*   literal types allow you to specify the exact value it must have.
+
+### Index Types
+
+*   With index types, you can get the compiler to check code that uses dynamic property names.
+
+### Mapped Types
+
+*   A common task is to take an existing type and make each of its properties optional or readonly.
+*   This happens often enough in Javascript that TypeScript provides a way to create new types based on old types — mapped types. In a mapped type, the new type transforms each property in the old type in the same way.
+*   The syntax resembles the syntax for index signatures with a `for .. in`
