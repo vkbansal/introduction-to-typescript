@@ -10,7 +10,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'index.ts'),
     context: __dirname,
     output: {
-        filename: PROD ? 'bundle.js' : 'bundle.[chunkhash].js',
+        filename: PROD ? 'bundle.[chunkhash].js' : 'bundle.js',
         hashDigestLength: 6,
         path: path.resolve(__dirname, 'build'),
         publicPath: PROD ? '/introduction-to-typescript/' : '/'
@@ -46,7 +46,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin(PROD ? 'styles.[contenthash:6].css' : 'styles.css'),
+        new ExtractTextPlugin(PROD ? 'styles.[contenthash:base64:6].css' : 'styles.css'),
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, './slides/00-main.hbs'),
             filename: 'index.html',
