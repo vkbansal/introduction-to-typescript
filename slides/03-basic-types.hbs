@@ -111,4 +111,22 @@ function infiniteLoop(): never {
 }</code></pre>
         </div>
     </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Unknown</div>
+            <pre><code data-lang="ts"> // Introduced in TypeScript 3.0
+function f20(x: unknown) {
+    if (typeof x === "string" || typeof x === "number") {
+        x;  // string | number
+    }
+    if (x instanceof Error) {
+        x;  // Error
+    }
+    if (isFunction(x)) {
+        x;  // Function
+    }
+}</code></pre>
+        </div>
+        </section>
 </section>
