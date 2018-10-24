@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Introduction to TypeScript</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Ubuntu+Mono" rel="stylesheet">
+<link href="/introduction-to-typescript/styles.3GB7L5.css" rel="stylesheet"></head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="slide-1">
+                <div class="main-title">Introduction To
+                    <span class="logo">
+                        <img src="./images/ts-logo.svg" /> </div>
+                </span>
+                <p>Vivek Kumar Bansal</p>
+            </section>
+<section class="slide-2 slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">What is TypeScript?</div>
+        <div class="fragment subtitle">An open-source language created by Microsoft</div>
+        <div class="fragment subtitle">Static type-checker and ES2015/16/17 transpiler</div>
+        <div class="fragment subtitle">First class support for types, classes and modules</div>
+        <div class="fragment subtitle">A superset of JavaScript that compiles to plain JavaScript</div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">What is TypeScript?</div>
+        <div class="ts-sets">
+            <svg class="fragment fade-in" width="600px" height="600px" viewBox="0 0 200 200" data-fragment-index="2">
+                <circle cx="100" cy="100" r="100" fill="#007ACC" />
+                <text x="100" y="50" style="text-anchor: middle; font-size: 1.5rem" fill="#fff">TypeScript</text>
+            </svg>
+            <svg class="fragment fade-in" width="400px" height="400px" viewBox="0 0 200 200" data-fragment-index="1">
+                <circle cx="100" cy="100" r="100" fill="#dedede" />
+                <text x="100" y="60" style="text-anchor: middle; font-size: 1.5rem">ES Next</text>
+            </svg>
+            <svg width="200px" height="200px" viewBox="0 0 200 200" data-fragment-index="1">
+                <circle cx="100" cy="100" r="100" fill="#f7df1e" />
+                <text x="100" y="100" dy="10" style="text-anchor: middle; font-size: 2rem;font-weight: bold">JS Today</text>
+            </svg>
+        </div>
+    </section>
+</section>
+<section class="slide-3 slide-full">
+    <div class="title">Why TypeScript?</div>
+    <div class="fragment fade-in subtitle">Makes code easier to analyse.</div>
+    <div class="fragment fade-in subtitle">Reliable Refactoring.</div>
+    <div class="fragment fade-in subtitle">Better IDE Support.</div>
+    <div class="fragment fade-in subtitle">Can catch errors early.</div>
+    <div class="fragment fade-in subtitle">Incrementally move an existing JavaScript code base to TypeScript.</div>
+</section>
+<section class="slide-4 slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Boolean</div>
+            <pre><code data-lang="ts">let isDone: boolean = false;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Number</div>
+            <pre><code data-lang="ts">let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">String</div>
+            <pre><code data-lang="ts">let color: string = "blue";
+color = 'red';</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Array</div>
+            <pre><code data-lang="ts">let list: number[] = [1, 2, 3];</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">let list: Array&lt;number> = [1, 2, 3];</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Tuple</div>
+            <pre><code data-lang="ts">// Declare a tuple type
+let x: [string, number];</code></pre>
+            <pre class="fragment fade-in"><code data-lang="ts">// Initialize it
+x = ["hello", 10]; // OK</code></pre>
+            <pre class="fragment fade-in"><code data-lang="ts">// Initialize it incorrectly
+x = [10, "hello"]; // Error</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Enum</div>
+            <pre><code data-lang="ts">enum Color {Red, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2];
+
+alert(colorName); // Displays 'Green' as its value is 2 above</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="subtitle">Enum</div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">enum Direction {
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
+}</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Any</div>
+            <pre><code data-lang="ts">let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // okay, definitely a boolean</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Void</div>
+            <pre><code data-lang="ts">function warnUser(): void {
+    alert("This is my warning message");
+}</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <pre><code data-lang="ts">let unusable: void = undefined; // DO NOT DO THIS!</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Null and Undefined</div>
+            <pre><code data-lang="ts">// Not much else we can assign to these variables!
+let u: undefined = undefined;
+let n: null = null;</code></pre>
+        </div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Never</div>
+            <pre><code data-lang="ts">// Function returning never must have unreachable end point
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// Function returning never must have unreachable end point
+function infiniteLoop(): never {
+    while (true) {
+    }
+}</code></pre>
+        </div>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Basic Types</div>
+        <div class="fragment fade-in">
+            <div class="subtitle">Unknown</div>
+            <pre><code data-lang="ts"> // Introduced in TypeScript 3.0
+function f20(x: unknown) {
+    if (typeof x === "string" || typeof x === "number") {
+        x;  // string | number
+    }
+    if (x instanceof Error) {
+        x;  // Error
+    }
+    if (isFunction(x)) {
+        x;  // Function
+    }
+}</code></pre>
+        </div>
+        </section>
+</section>
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <pre class="fragment fade-in"><code data-lang="ts">// Named function
+function add(x, y) {
+    return x + y;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">// Anonymous function
+let add = (x, y) =&gt; x + y;</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <pre><code data-lang="ts">// Named function
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+// Anonymous function
+let add = (x, y) =&gt; x + y;</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <pre><code data-lang="ts">// Named function
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+// Anonymous function
+let add = (x: number, y: number): number =&gt; x + y;</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let add: (x: number, y: number) =&gt; number =
+    (x: number, y: number): number =&gt; x + y;</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <pre><code data-lang="ts">// Named function
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+// Anonymous function
+let add = (x: number, y: number): number =&gt; x + y;
+
+let add: (x: number, y: number) =&gt; number =
+    (x, y) =&gt; x + y;</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Parameters Check</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // error, too few parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName?: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works, but there is an issue!</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName?: string): string {
+    if (lastName) {
+        return firstName + " " + lastName;
+    }
+
+    return firstName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works correctly now</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, lastName = "Smith"): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // works correctly now</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", undefined); // still works</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result4 = buildName("Bob", "Adams"); // ah, just right</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Optional vs Default parameters</div>
+        <pre><code data-lang="ts">// optional parameters
+function buildName(firstName: string, lastName?: string): string {
+    ...
+}
+
+// default-initialized parameters
+function buildName(firstName: string, lastName = "Smith"): string {
+    ...
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+         <div class="subtitle">Optional vs Default parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName = "John", lastName?: string): string {
+    return firstName + " " + lastName;
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result1 = buildName("Bob"); // error, too few parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result2 = buildName("Bob", "Adams", "Sr."); // error, too many parameters</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result3 = buildName("Bob", "Adams"); // okay and returns "Bob Adams"</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let result4 = buildName(undefined, "Adams"); // okay and returns "John Adams"</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName, ...restOfName) {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+         <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, ...restOfName): string {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Functions</div>
+        <div class="subtitle">Rest parameters</div>
+        <pre><code data-lang="ts">function buildName(firstName: string, ...restOfName: string[]): string {
+    return firstName + " " + restOfName.join(" ");
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");</code></pre>
+    </section>
+</section>
+<section class="slide slide-full">
+    <div class="title">Inferred Types</div>
+    <pre class="fragment fade-in"><code data-lang="ts">let someOtherString = 'Yet Another String';</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">someOtherString = 1234;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// [ts] Type '1234' is not assignable to type 'string'</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">let userId = (a: string, b:number) => a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// let userId: (a: string, b: number) => string</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// try this
+let userId = (a: string, b:number): number => a + b;</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// [ts] Type 'number' is not assignable to type 'string'</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">let target = document.getElementById('target');</code></pre>
+    <pre class="fragment fade-in"><code data-lang="ts">// let target: HTMLElement | null</code></pre>
+</section>
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre class="fragment fade-in" style="max-height: 550px"><code data-lang="ts">const blogpost = {
+    id: 1,
+    title: 'Random blog post title',
+    author: {
+        first_name: 'John',
+        last_name: 'Doe'
+    },
+    comments: [
+        {
+            author: {
+                first_name: 'Johny',
+                last_name: 'Bravo'
+            },
+            body: 'first comment'
+        },
+        {
+            author: {
+                first_name: 'Hodor',
+                last_name: 'Hodor'
+            },
+            body: 'Hodor Hodor Hodor Hodor!'
+        }
+    ]
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: {
+        first_name: string;
+        last_name: string;
+    }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: {
+        first_name: string;
+        last_name: string;
+    };
+    comments: Array<{
+        author: {
+            first_name: string;
+            last_name: string;
+        };
+        body: string;
+    }>
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: {
+        first_name: string;
+        last_name: string;
+    };
+    comments: Array<{
+        author: {
+            first_name: string;
+            last_name: string;
+        };
+        body: string;
+    }>
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Array<{
+        author: Author;
+        body: string;
+    }>
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Array<{
+        author: Author;
+        body: string;
+    }>
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author;
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author;
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author: Author; // You need to allow anonymous comments
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Creating an interface</div>
+        <pre><code data-lang="ts">interface BlogPost {
+    id: number;
+    title: string;
+    author: Author;
+    comments: Comment[];
+}
+
+interface Author {
+    first_name: string;
+    last_name: string;
+}
+
+interface Comment {
+    author?: Author;
+    body: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Readonly properties</div>
+        <pre><code data-lang="ts">interface Point {
+    x: number;
+    y: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Readonly properties</div>
+        <pre><code data-lang="ts">interface Point {
+    readonly x: number;
+    readonly y: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let p1: Point = { x: 10, y: 20 };</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">p1.x = 5; // error!</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Optional properties</div>
+        <pre><code data-lang="ts">interface SquareConfig {
+    color: string;
+    width: number;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Optional properties</div>
+        <pre><code data-lang="ts">interface SquareConfig {
+    color?: string;
+    width?: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function createSquare(config: SquareConfig): { color: string; area: number } {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let mySquare = createSquare({ colour: "red", width: 100 });</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">/*
+    Object literal may only specify known properties,
+    but 'colour' does not exist in type 'SquareConfig'.
+    Did you mean to write 'color'?
+*/</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Function Types</div>
+        <pre><code data-lang="ts">// Remember me?
+function buildName(firstName: string, lastName: string): string {
+    return firstName + " " + lastName;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface BuildName {
+   (firstName: string, lastName: string): string;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let buildName2: BuildName = function(firstName, lastName) {
+    return firstName + " " + lastName;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Function Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface SomeConverter {
+   serializer(input: any): string;
+   deserializer: (input: string) => any;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Class Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date);
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Extending interfaces</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}</code></pre></section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Interfaces</div>
+        <div class="subtitle">Extending interfaces</div>
+        <pre><code data-lang="ts">interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}</code></pre></section>
+</section>
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function reduce(input, reducer, initialValue) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input,
+    reducer,
+    initialValue
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue: any
+) {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce(
+    input: any[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: any[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: any
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: Output
+): any {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: any, b: any) =&gt; any,
+    initialValue: Output
+): Output {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;Input, Output&gt;(
+    input: Input[],
+    reducer: (a: Output, b: Input) =&gt; Output,
+    initialValue: Output
+): Output {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">function reduce&lt;T, U&gt;(
+    input: T[],
+    reducer: (a: U, b: T) =&gt; T,
+    initialValue: U
+): U {
+    let finalValue = initialValue;
+    let length = input.length;
+
+    for (let i = 0; i < length; i++) {
+        finalValue = reducer(finalValue, input[i]);
+    }
+
+    return finalValue;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Generics</div>
+        <pre><code data-lang="ts">import * as React from 'react';
+
+interface MyProps {
+    // some props
+}
+
+interface MyState {
+    // some props
+}
+
+class MyComponent extends React.Component&lt;MyProps, MyState&gt;{
+    render() {
+        // your code here
+    };
+}</code></pre>
+    </section>
+</section>
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function createShape(kind: string): Shape {
+    switch (kind) {
+        case 'circle':
+            return new Circle();
+        case 'square':
+            return new Square();
+        case 'triangle':
+            return new Triangle();
+        default:
+            return new Shape();
+    }
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// this is a Shape
+const circle = createShape('circle');</code></pre>
+        <pre><code data-lang="ts">// this is also a Shape
+const square = createShape('square');</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// now this will be treated as Circle
+const circle = &lt;Circle>createShape('circle');
+
+// this is still a Shape
+const square = createShape('square');</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Type Assertion</div>
+        <pre><code data-lang="ts">class Shape {}
+class Circle extends Shape {}
+class Square extends Shape {}
+class Triangle extends Shape {}
+
+function createShape(kind: string): Shape {
+    // ...
+}
+
+// now this will be treated as Circle
+const circle = &lt;Circle>createShape('circle');
+
+// now this will be treated as Square
+const square = createShape('square') as Square;</code></pre>
+    </section>
+</section>
+<section class="slide-full">
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend(first, second) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U): T & U {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+interface EmploymentStatus {
+    employed: boolean;
+    job: string;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Intersection Types</div>
+        <pre><code data-lang="ts">/**
+ * Returns a new object with all the own properties
+ * copied from first and second arguments
+ */
+function extend&lt;T, U>(first: T, second: U): T & U {
+    // ...
+}
+interface Person { /* ... */ }
+interface EmploymentStatus { /* ... */ }
+
+const jim: Person =  {  firstName: "Jim", lastName: "Parson" };
+const actor: EmploymentStatus = { employed: true, job: "Actor" };
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">const jimTheActor = extend(jim, actor); // Person & EmploymentStatus
+console.log(jimTheActor.employed); // true</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Union Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: any) {
+    if (typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+
+    if (typeof padding === "string") {
+        return padding + value;
+    }
+
+    throw new Error(`Expected string or number, got '${padding}'.`);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Union Types</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: any) {
+    // ...
+}
+
+padLeft("Hello world", 4); // returns "    Hello world"</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let indentedString = padLeft("Hello world", true);
+// passes at compile time, fails at runtime.</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Union Types</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: string | number) {
+    // ...
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let indentedString = padLeft("Hello world", true);
+// errors during compilation</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Type Aliases</div>
+        <pre class="fragment fade-in"><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+function padLeft(value: string, padding: string | number) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Type Aliases</div>
+        <pre><code data-lang="ts">/**
+ * Takes a string and adds "padding" to the left.
+ * If 'padding' is a string, then 'padding' is appended
+ * to the left side.
+ * If 'padding' is a number, then that number of spaces
+ * is added to the left side.
+ */
+type Padding = string | number;
+
+function padLeft(value: string, padding: Padding) {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Type Aliases</div>
+        <pre><code data-lang="ts">type SingleOrArray&lt;T> = T | T[];</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Tree&lt;T> = {
+    value: T;
+    left: Tree&lt;T>;
+    right: Tree&lt;T>;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Literal Types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type Easing = "ease-in" | "ease-out" | "ease-in-out";
+animate(dx: number, dy: number, easing: Easing) {
+    // ...
+}
+</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type DieRoll = 1 | 2 | 3 | 4 | 5 | 6;
+function rollDie(): DieRoll {
+    // ...
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    name: string;
+    age: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let person: Person = {
+    name: 'Jarid',
+    age: 35
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let strings: string[] = pluck(person, ['name']); // ok, string[]</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+let person: Person = {
+    name: 'Jarid',
+    age: 35
+}
+
+let strings: string[] = pluck(person, ['name', 'unknown']);
+// what would happen here?</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">function pluck(o, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names: K[]) {
+    return names.map(n => o[n]);
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">let personProps: keyof Person; // 'name' | 'age'
+
+function pluck&lt;T, K extends keyof T>(o: T, names: K[]): Array&lt;T[K]> {
+    return names.map(n => o[n]);
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">let strings: string[] = pluck(person, ['name', 'unknown']);
+// error, 'unknown' is not in 'name' | 'age'</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Index types</div>
+        <pre><code data-lang="ts">interface Map&lt;T> {
+    [key: string]: T;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type Keys = 'option1' | 'option2';</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Flags = {
+    [K in Keys]: boolean
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">// is eqivalent to
+type Flags = {
+    option1: boolean;
+    option2: boolean;
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">interface Person {
+    name: string;
+    age: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface PersonPartial {
+    name?: string;
+    age?: number;
+}</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">interface PersonReadOnly {
+    readonly name: string;
+    readonly age: number;
+}</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre class="fragment fade-in"><code data-lang="ts">type ReadOnly&lt;T> = {};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre><code data-lang="ts">type ReadOnly&lt;T> = {
+    [K in keyof T]: T[K];
+};</code></pre>
+    </section>
+    <section class="slide-full" data-transition="fade-in" data-transition-speed="fast">
+        <div class="title">Advanced Types</div>
+        <div class="subtitle">Mapped types</div>
+        <pre><code data-lang="ts">type ReadOnly&lt;T> = {
+    readonly [K in keyof T]: T[K];
+};</code></pre>
+        <pre class="fragment fade-in"><code data-lang="ts">type Partial&lt;T> = {
+    [K in keyof T]?: T[K];
+}</code></pre>
+    </section>
+</section>
+            <section class="end-slide">
+                <div class="main-title">That's all folks!</div>
+            </section>
+        </div>
+    </div>
+<script type="text/javascript" src="/introduction-to-typescript/bundle.02d517.js"></script></body>
+
+</html>
